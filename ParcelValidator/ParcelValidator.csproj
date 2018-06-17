@@ -45,6 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Inspector\IInspectorProvider.cs" />
+    <Compile Include="Inspector\Inspector.cs" />
+    <Compile Include="Inspector\InspectorProvider.cs" />
+    <Compile Include="ParcelSize.cs" />
+    <Compile Include="PipeCorner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

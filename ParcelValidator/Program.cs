@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace ParcelValidator
 {
@@ -54,17 +53,5 @@ namespace ParcelValidator
 
             return result;
         }
-    }
-
-    internal struct ParcelSize
-    {
-        internal int Length;
-        internal int Width;
-    }
-
-    internal struct PipeCorner
-    {
-        internal int Inlet;
-        internal int Outlet;
     }
 }
