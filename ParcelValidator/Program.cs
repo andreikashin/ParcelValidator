@@ -69,21 +69,5 @@ namespace ParcelValidator
 
             return inspector.InspectPipeCorners(parcelSize, pipeCorners);
         }
-
-        //private static List<PipeCorner> ParseCorners(string[] values)
-        //{
-        //    var result = new List<PipeCorner>();
-
-        //    for (var idx = 2; idx < values.Length - 1; idx++)
-        //    {
-        //        result.Add(new PipeCorner
-        //        {
-        //            Inlet = int.Parse(values[idx]),
-        //            Outlet = int.Parse(values[idx + 1])
-        //        });
-        //    }
-
-        //    return result;
-        //}
     }
 }

@@ -17,6 +17,13 @@ namespace ParcelValidator
         {
         }
 
+        /// <summary>
+        ///     Inspect every given corner in the list of <paramref name="corners"/> 
+        ///     in appliance to the size of <paramref name="parcel"/>
+        /// </summary>
+        /// <param name="parcel">Size of parcel</param>
+        /// <param name="corners">List of corner dimensions</param>
+        /// <returns>The array of boolean results for each corner</returns>
         public List<bool> InspectPipeCorners(ParcelSize parcel, List<PipeCorner> corners)
         {
             var firstElbow = corners.FirstOrDefault();

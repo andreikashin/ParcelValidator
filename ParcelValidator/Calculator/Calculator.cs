@@ -4,6 +4,12 @@ namespace ParcelValidator
 {
     public class Calculator : ICalculator
     {
+        /// <summary>
+        ///     Check passability of the parcel via given corner.
+        /// </summary>
+        /// <param name="parcel">The size of parcel</param>
+        /// <param name="corner">Corner parameters</param>
+        /// <returns>Whether parcel could pass the pipeline elbow</returns>
         public bool IsSuitableCorner(ParcelSize parcel, PipeCorner corner)
         {
             double width = parcel.Width;
