@@ -1,6 +1,6 @@
 ﻿namespace ParcelValidator
 {
-    internal abstract class Inspector
+    public abstract class Inspector
     {
         
     }

@@ -1,6 +1,6 @@
 ﻿namespace ParcelValidator
 {
-    internal interface ICalculator
+    public interface ICalculator
     {
         bool IsSuitableCorner(ParcelSize parcel, PipeCorner corner);
     }

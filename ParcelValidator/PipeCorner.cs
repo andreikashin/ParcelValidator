@@ -1,6 +1,6 @@
 ﻿namespace ParcelValidator
 {
-    internal struct PipeCorner
+    public struct PipeCorner
     {
         public int Inlet;
         public int Outlet;

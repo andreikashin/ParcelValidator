@@ -8,7 +8,7 @@ namespace ParcelValidator
     {
         public static void Main(string[] args)
         {
-            var values = new string[] {};
+            var values = new string[] { };
 
             if (args.Length == 1)
             {
@@ -21,11 +21,25 @@ namespace ParcelValidator
             }
 
             var result = ProcessValues(values);
-            var cnt = 0;
+            var cnt = 1;
 
-            foreach (var passability in result)
+            if (!result.Contains(false))
             {
-                
+                Console.WriteLine("Fits.");
+            }
+            else
+            {
+                foreach (var passability in result)
+                {
+                    if (passability)
+                    {
+                        cnt++;
+                        continue;
+                    }
+
+                    Console.WriteLine($"Does not fit. Parcel will stuck in corner {cnt}.");
+                    break;
+                }
             }
         }
 
@@ -48,25 +62,28 @@ namespace ParcelValidator
                 Length = int.Parse(values[0]),
                 Width = int.Parse(values[1])
             };
-            var pipeCorners = ParseCorners(values);
 
-            return new CornerInspector().InspectPipeCorners(parcelSize, pipeCorners);
+            var inspector = new CornerInspector();
+
+            var pipeCorners = inspector.ParseCorners(values);
+
+            return inspector.InspectPipeCorners(parcelSize, pipeCorners);
         }
 
-        private static List<PipeCorner> ParseCorners(string[] values)
-        {
-            var result = new List<PipeCorner>();
+        //private static List<PipeCorner> ParseCorners(string[] values)
+        //{
+        //    var result = new List<PipeCorner>();
 
-            for (var idx = 2; idx < values.Length - 1; idx++)
-            {
-                result.Add(new PipeCorner
-                {
-                    Inlet = int.Parse(values[idx]),
-                    Outlet = int.Parse(values[idx + 1])
-                });
-            }
+        //    for (var idx = 2; idx < values.Length - 1; idx++)
+        //    {
+        //        result.Add(new PipeCorner
+        //        {
+        //            Inlet = int.Parse(values[idx]),
+        //            Outlet = int.Parse(values[idx + 1])
+        //        });
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
     }
 }

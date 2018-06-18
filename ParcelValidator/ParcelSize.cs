@@ -1,6 +1,6 @@
 ﻿namespace ParcelValidator
 {
-    internal class ParcelSize
+    public class ParcelSize
     {
         public int Length { get; set; }
         public int Width { get; set; }

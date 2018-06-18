@@ -2,7 +2,7 @@
 
 namespace ParcelValidator
 {
-    internal class Calculator : ICalculator
+    public class Calculator : ICalculator
     {
         public bool IsSuitableCorner(ParcelSize parcel, PipeCorner corner)
         {
@@ -12,11 +12,18 @@ namespace ParcelValidator
             var inlet = corner.Inlet;
             var outlet = corner.Outlet;
 
-            // find suitability of parcel's sidewise entry
             if (width > inlet ||
                 width > outlet)
             {
                 return false;
+            }
+
+            if (corner.Inlet == corner.Outlet)
+            {
+                var side = corner.Inlet;
+                var hypotenuse = Math.Sqrt(side * side * 2);
+
+                return width < hypotenuse - length / 2;
             }
 
             var maxSuitableLength = Math.Sqrt(inlet * inlet + width * width) +

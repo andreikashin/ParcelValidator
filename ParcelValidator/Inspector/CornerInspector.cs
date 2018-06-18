@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ParcelValidator
 {
-    internal class CornerInspector : Inspector
+    public class CornerInspector : Inspector
     {
 
         private readonly ICalculator _calc;
@@ -37,6 +37,22 @@ namespace ParcelValidator
             return corners
                 .Select(x => _calc.IsSuitableCorner(parcel, x))
                 .ToList();
+        }
+
+        public List<PipeCorner> ParseCorners(string[] values)
+        {
+            var result = new List<PipeCorner>();
+
+            for (var idx = 2; idx < values.Length - 1; idx++)
+            {
+                result.Add(new PipeCorner
+                {
+                    Inlet = int.Parse(values[idx]),
+                    Outlet = int.Parse(values[idx + 1])
+                });
+            }
+
+            return result;
         }
     }
 }
