@@ -8,34 +8,49 @@ namespace ParcelValidator
     {
         public static void Main(string[] args)
         {
-
-            var parcelSize = new ParcelSize();
-            var pipeCorners = new List<PipeCorner>();
+            var values = new string[] {};
 
             if (args.Length == 1)
             {
-                var values = args.FirstOrDefault()?.Split(',');
-
-                if (values == null)
-                {
-                    throw new ArgumentNullException();
-                }
-                if (values.Length < Constants.ParcelDimensionCount +
-                    Constants.CornerDimensionCount)
-                {
-                    throw new ArgumentException("Insufficient arguments");
-                }
-
-                parcelSize.Length = int.Parse(values[0]);
-                parcelSize.Width = int.Parse(values[1]);
-                pipeCorners = ParseCorners(values);
+                values = args.FirstOrDefault()?.Split(',');
             }
 
             else if (args.Length > 1)
             {
-                throw new ArgumentException();
+                values = args.Select(x => x.Trim(',')).ToArray();
             }
 
+            var result = ProcessValues(values);
+            var cnt = 0;
+
+            foreach (var passability in result)
+            {
+                
+            }
+        }
+
+        private static List<bool> ProcessValues(string[] values)
+        {
+
+            if (values == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (values.Length <
+                Constants.Dimensions.ParcelDimensionCount +
+                Constants.Dimensions.CornerDimensionCount)
+            {
+                throw new ArgumentException("Insufficient arguments");
+            }
+
+            var parcelSize = new ParcelSize
+            {
+                Length = int.Parse(values[0]),
+                Width = int.Parse(values[1])
+            };
+            var pipeCorners = ParseCorners(values);
+
+            return new CornerInspector().InspectPipeCorners(parcelSize, pipeCorners);
         }
 
         private static List<PipeCorner> ParseCorners(string[] values)

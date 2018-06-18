@@ -2,7 +2,11 @@
 {
     internal static class Constants
     {
-        public static int ParcelDimensionCount = 2;
-        public static int CornerDimensionCount = 2;
+        internal class Dimensions
+        {
+            public static int ParcelDimensionCount = 2;
+            public static int CornerDimensionCount = 2;
+        }
     }
+
 }
